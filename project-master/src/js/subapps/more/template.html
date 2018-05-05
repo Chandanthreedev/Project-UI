@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>RedBOX</title>
+	<script src="controller.js"></script>
+</head>
+<body> 
+	<div class="container">
+    <div class="row">
+	<div class="col-md-4 col-md-offset-2">
+						
+	<div class="jumbotron text-center " style="width:100%">
+     <form role="form"> 
+	 <legend>Emergency Contact Details:</legend>
+	 <div class="list-group" ng-repeat="x in person" >
+			<a  class="list-group-item list-group-item-action active"><strong><ol><li>
+			  {{x.username}}------->{{x.number}}</li></ol></strong><button ng-click="delete($id)" style="color:blue">Delete</button>
+			</a>
+	 </form>
+	</div></div>
+			
+<!--div class="col-md-6 col-md-offset-2">
+	<div class="jumbotron text-center" style="width:100%">
+			<form>
+			<legend>People who added you in their Contact Details:</legend>
+			<div class="list-group" ng-repeat="x1 in person">
+				   <a  class="list-group-item list-group-item-action active"><strong>
+					 {{x1.username}}   {{x1.number}}</strong>
+				   </a>
+			</form>
+		   </div-->
+		   
+</body>
+</html>
