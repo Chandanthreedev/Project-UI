@@ -2,9 +2,9 @@
     'use strict';
     angular.module('ngSeedApp.controllers')
         .controller('homeController', [
-                '$scope', '$http',
+                '$scope', '$http','$location',
 
-                function($scope, $http) {
+                function($scope, $http,$location) {
                     $scope.data = '';
                     $scope.test = function() {
                         var user = $('#username').val();
@@ -14,17 +14,19 @@
                         var da = { 'username':user,'password':user1};
                         $http({
                                 method: 'POST',
-                                url: 'http://be27d057.ngrok.io/login',
+                                url: 'https://cryptic-brushlands-32872.herokuapp.com/login',
                                 data: da
                             })
                             .success(
                                 function(res) {
-                                    console.log(res);
-                                }
+                                    var rut = "/more/"+user;
+                                    $location.path(rut);
+                                     }
                             )
                             .error(
                                 function(err) {
                                     console.log(err);
+                                    alert("Please Enter Valid Username and Password")
                                 }
                             )
                     }

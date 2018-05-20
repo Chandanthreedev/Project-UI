@@ -2,9 +2,9 @@
     'use strict';
     angular.module('ngSeedApp.controllers')
         .controller('contactController', [
-            '$scope', '$http','$stateParams', 
+            '$scope', '$http','$stateParams', '$location',
             
-            function($scope, $http,$stateParams) {
+            function($scope, $http,$stateParams,$location) {
                 $scope.data = '';
                 $scope.click = function() {
                     var user = $('#name').val();
@@ -14,17 +14,21 @@
 
                     $http({
                             method: 'POST',
-                            url: 'http://be27d057.ngrok.io/addconts',
+                            url: 'https://cryptic-brushlands-32872.herokuapp.com/addconts',
                             data: da,
                         })
                         .success(
                             function(res) {
-                                console.log(res);
+                                var rut = "/more/"+username;
+                                $location.path(rut);
+                                alert("You have added a new contact!!")
+                            
                             }
                         )
                         .error(
                             function(err) {
                                 console.log(err);
+                                alert("Failed to add contact!!")
                             }
                         )
                 }

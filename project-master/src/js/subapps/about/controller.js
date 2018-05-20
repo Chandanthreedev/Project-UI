@@ -1,21 +1,11 @@
 (function() {
     'use strict';
         angular.module('ngSeedApp.controllers')
-       /*p.config(['$locationProvider', '$urlRouterProvider',
-        function($locationProvider, $urlRouterProvider) {
-
-            $urlRouterProvider.otherwise('/');
-
-
-            $locationProvider.when({
-                url:'/login',
-                controller: 'homeController',
-                templateUrl: 'src/js/subapps/home/template.html'
-            })}])*/
+       
         .controller('signupController', [
-            '$scope', '$http', 
+            '$scope', '$http', '$location',
             
-            function($scope, $http) {
+            function($scope, $http,$location) {
                 $scope.data = '';
                 $scope.test = function() {
                     var user = $('#username').val();
@@ -25,25 +15,29 @@
                     var da = { 'username':user,'password':user1,'mobile':user2 };
                     $http({
                             method: 'POST',
-                            url: 'http://d316c19a.ngrok.io/signup',
+                            url: 'https://cryptic-brushlands-32872.herokuapp.com/signup',
                             data: da
                         })
                         .success(
                             function(res) {
-                                console.log(res);
+                                alert("Successfully Registered!!!!")
+                                var rut = "/login";
+                                $location.path(rut);
+
                             }
                         )
                         .error(
                             function(err) {
                                 console.log(err);
+                                alert("Failed to register")
                             }
                         )
                 }
-                /*$scope.login=function(path){
-                    $location.path(path)
+               
+                 $scope.click=function(){
+                     $location.path("/login")
+                 }   
                     
-                    
-                    }*/
                     
                     
                     

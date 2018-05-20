@@ -1,6 +1,6 @@
 (function() {
     'use strict';
-
+     const host="http://ba536cf3.ngrok.io"
     //Create a app level module which has dependencies on controllers and components
     var ngPrototype =
         angular.module('ngSeedApp', [
